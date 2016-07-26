@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Propiedades</h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="propiedade in vm.propiedades"
+       data-ui-sref="propiedades.view({ propiedadeId: propiedade._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span data-ng-bind="propiedade.created | date:'mediumDate'"></span>
+        by
+        <span data-ng-if="propiedade.user" data-ng-bind="propiedade.user.displayName"></span>
+        <span data-ng-if="!propiedade.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="propiedade.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="vm.propiedades.$resolved && !vm.propiedades.length">
+    No Propiedades yet, why don't you <a data-ui-sref="propiedades.create">create one</a>?
+  </div>
+</section>
